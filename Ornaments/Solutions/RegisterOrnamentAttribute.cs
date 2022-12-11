@@ -1,7 +1,7 @@
 ﻿namespace Ornaments.Solutions;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class SolutionAttribute : Attribute
+public class RegisterOrnamentAttribute : Attribute
 {
     public string Name { get; init; }
 
@@ -9,7 +9,7 @@ public class SolutionAttribute : Attribute
 
     public int Day { get; init; }
 
-    public SolutionAttribute(string name, int year, int day)
+    public RegisterOrnamentAttribute(string name, int year, int day)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException($"Name must not be empty.", nameof(name));

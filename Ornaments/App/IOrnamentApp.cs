@@ -1,6 +1,6 @@
 ﻿namespace Ornaments.App;
 
-public interface IAdventApp
+public interface IOrnamentApp
 {
     Task RunAsync(string[] args);
 }

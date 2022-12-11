@@ -6,7 +6,7 @@ namespace Ornaments.Internals;
 
 internal class SolutionDescriptor
 {
-    public SolutionAttribute Attributes { get; private set; }
+    public RegisterOrnamentAttribute Attributes { get; private set; }
 
     public ISolution Instance { get; private set; }
 
@@ -15,11 +15,11 @@ internal class SolutionDescriptor
         ArgumentNullException.ThrowIfNull(serviceProvider, nameof(serviceProvider));
         ArgumentNullException.ThrowIfNull(type, nameof(type));
         if (!type.IsAssignableTo(typeof(ISolution)))
-            throw new InvalidCastException($"Specified type is not a solution.");
+            throw new InvalidCastException($"Specified type is not an implementation of {nameof(ISolution)}.");
 
-        var attribute = type.GetCustomAttribute<SolutionAttribute>();
+        var attribute = type.GetCustomAttribute<RegisterOrnamentAttribute>();
         if (attribute is null)
-            throw new ArgumentException("Solution must have a SolutionAttribute.");
+            throw new ArgumentException($"Solution must have a {nameof(RegisterOrnamentAttribute)}.");
 
         Attributes = attribute;
         Instance = (ISolution)ActivatorUtilities.CreateInstance(serviceProvider, type);

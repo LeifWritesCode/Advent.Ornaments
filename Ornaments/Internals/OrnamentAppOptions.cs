@@ -1,6 +1,6 @@
 ﻿namespace Ornaments.Internals;
 
-internal class AdventAppOptions
+internal class OrnamentAppOptions
 {
     public int Year { get; init; }
 

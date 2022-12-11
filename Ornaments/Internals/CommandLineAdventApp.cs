@@ -6,7 +6,7 @@ using System.CommandLine.Parsing;
 
 namespace Ornaments.Internals;
 
-internal class CommandLineAdventApp : IAdventApp
+internal class CommandLineAdventApp : IOrnamentApp
 {
     private readonly IServiceProvider serviceProvider;
     private readonly RootCommand rootCommand;
@@ -38,7 +38,7 @@ internal class CommandLineAdventApp : IAdventApp
         });
 
         var solveCommand = new Command("solve", "Run Advent of Code event solutions.") { year, day, dryRun, tokenTypes };
-        var adventOptionsBinder = new AdventAppOptionsBinder(year, day, dryRun);
+        var adventOptionsBinder = new OrnamentAppOptionsBinder(year, day, dryRun);
         solveCommand.SetHandler(HandleSolveCommandAsync, adventOptionsBinder);
 
         var includeYears = new Option<IEnumerable<int>>(new[] { "-y", "--year" }, () => Enumerable.Range(2015, DateTime.Now.Year - 2015 + 1), "Advent of Code event year.");
@@ -65,7 +65,7 @@ internal class CommandLineAdventApp : IAdventApp
         await rootCommand.InvokeAsync(args);
     }
 
-    private async Task HandleSolveCommandAsync(AdventAppOptions adventAppOptions)
+    private async Task HandleSolveCommandAsync(OrnamentAppOptions adventAppOptions)
     {
         var solutionDescriptors = serviceProvider.GetRequiredService<IEnumerable<SolutionDescriptor>>();
         if (solutionDescriptors.IsEmpty())

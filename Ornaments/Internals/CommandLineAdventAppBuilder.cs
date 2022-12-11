@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Ornaments.Internals;
 
-internal class CommandLineAdventAppBuilder : IAdventAppBuilder
+internal class CommandLineAdventAppBuilder : IOrnamentAppBuilder
 {
     private readonly IServiceCollection serviceCollection;
     private readonly Queue<Action<IServiceCollection>> configurations;
@@ -17,7 +17,7 @@ internal class CommandLineAdventAppBuilder : IAdventAppBuilder
         configurations = new Queue<Action<IServiceCollection>>();
     }
 
-    public IAdventAppBuilder ConfigureServices(Action<IServiceCollection> configuration)
+    public IOrnamentAppBuilder ConfigureServices(Action<IServiceCollection> configuration)
     {
         ArgumentNullException.ThrowIfNull(configuration);
 
@@ -25,7 +25,7 @@ internal class CommandLineAdventAppBuilder : IAdventAppBuilder
         return this;
     }
 
-    public IAdventApp Build()
+    public IOrnamentApp Build()
     {
         var configurationBuilder = new ConfigurationBuilder();
         configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
@@ -38,7 +38,7 @@ internal class CommandLineAdventAppBuilder : IAdventAppBuilder
             .Where(x => x.IsAssignableTo(typeof(ISolution)))
             .Where(x => x.IsClass)
             .Where(x => !x.IsAbstract)
-            .Where(x => x.GetCustomAttribute<SolutionAttribute>() is not null);
+            .Where(x => x.GetCustomAttribute<RegisterOrnamentAttribute>() is not null);
 
         foreach (var solution in solutions )
             serviceCollection.AddTransient(sp => new SolutionDescriptor(sp, solution));
