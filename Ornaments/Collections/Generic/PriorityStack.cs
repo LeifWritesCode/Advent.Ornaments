@@ -1,6 +1,6 @@
 ﻿using Ornaments.Extensions;
 
-namespace Ornaments.Collections;
+namespace Ornaments.Collections.Generic;
 
 /// <summary>
 /// Represents a prioritised variable size last-in-first-out (LIFO) collection of instances of the same specified type.

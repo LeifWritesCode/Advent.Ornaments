@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Ornaments.Data.Models;
 
@@ -9,18 +10,18 @@ internal class Challenge
     public int Id { get; set; }
 
     [Required]
-    public string Name { get; set; }
+    public int Year { get; set; }
 
     [Required]
-    public string Description { get; set; }
+    public int Day { get; set; }
 
-    public Challenge(int id, string name, string description, IEnumerable<Submission> submissions)
-    {
-        Id = id;
-        Name = name;
-        Description = description;
-        Submissions = submissions;
-    }
+    [Required]
+    public string Name { get; set; } = string.Empty;
 
-    public IEnumerable<Submission> Submissions { get; set; }
+    [Required]
+    public string Description { get; set; } = string.Empty;
+
+    public IEnumerable<Submission> Submissions { get; set; } = Enumerable.Empty<Submission>();
+
+    public IEnumerable<Input> Inputs { get; set; } = Enumerable.Empty<Input>();
 }

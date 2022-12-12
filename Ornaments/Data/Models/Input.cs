@@ -2,23 +2,20 @@
 
 namespace Ornaments.Data.Models;
 
-internal class Submission
+internal class Input
 {
     [Key]
     [Required]
     public int Id { get; set; }
 
     [Required]
-    public DateTime DateTime { get; set; }
-
-    [Required] public string Answer { get; set; } = string.Empty;
+    public string Value { get; set; } = string.Empty;
 
     [Required]
-    public Response Response { get; set; }
+    public Identity? Identity { get; set; }
 
     [Required]
     public Challenge? Challenge { get; set; }
 
-    [Required]
-    public Input? Input { get; set; }
+    public IEnumerable<Submission> Submissions { get; set; } = Enumerable.Empty<Submission>();
 }

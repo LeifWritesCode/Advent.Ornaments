@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ManualTestHarness": {
+      "commandName": "Project",
+      "commandLineArgs": "solve -y 2022 -d 1"
+    }
+  }
+}

@@ -13,15 +13,7 @@ internal class Identity
     public TokenType Provider { get; set; }
 
     [Required]
-    public string Token { get; set; }
+    public string Token { get; set; } = string.Empty;
 
-    public Identity(int id, TokenType provider, string token, IEnumerable<Submission> submissions)
-    {
-        Id = id;
-        Provider = provider;
-        Token = token;
-        Submissions = submissions;
-    }
-
-    public IEnumerable<Submission> Submissions { get; set; }
+    public IEnumerable<Input> Inputs { get; set; } = Enumerable.Empty<Input>();
 }

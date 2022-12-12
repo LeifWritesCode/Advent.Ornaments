@@ -6,12 +6,12 @@ using System.CommandLine.Parsing;
 
 namespace Ornaments.Internals;
 
-internal class CommandLineAdventApp : IOrnamentApp
+internal class CommandLineOrnamentsApp : IOrnamentsApp
 {
     private readonly IServiceProvider serviceProvider;
     private readonly RootCommand rootCommand;
 
-    public CommandLineAdventApp(IServiceProvider serviceProvider)
+    public CommandLineOrnamentsApp(IServiceProvider serviceProvider)
     {
         this.serviceProvider = serviceProvider;
 

@@ -1,6 +1,6 @@
 ﻿using Ornaments.Extensions;
 
-namespace Ornaments.Collections;
+namespace Ornaments.Collections.Generic;
 
 /// <summary>
 /// Represents a prioritised first-in, first-out collection of objects.
