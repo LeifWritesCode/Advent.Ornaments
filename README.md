@@ -1,23 +1,14 @@
 # Ornaments SDK
-An [Advent of Code](https://adventofcode.com) solutions runner and standard library.
 
-## How to Use this SDK
+An [Advent of Code](https://adventofcode.com) solutions runner and standard library by [Leif Walker-Grant](https://uk.linkedin.com/in/championofgoats).
 
-1. Add reference to Ornaments to your project.
-2. In your main method, add...
+## (Really) Quick Start
 
 ```csharp
-await OrnamentApp.CreateDefault().RunAsync(args);
-```
-
-3. Add a new class implementing `ISolution`.
-4. Decorate (3) with a `RegisterOrnamentAttribute` describing name, year, and date.
-5. Build and run by issuing `dotnet run solve -y <year> -d <day>` from the root of your project.
-
-## Get Started Fast Copypasta
-
-```csharp
-// Program.cs
+// Create a new .NET 7 C# Console App named SomeConsoleApp
+// Install Ornaments from NuGet
+// Replace Program.cs with this code
+// $ dotnet run solve --year 2022 --day 1
 
 using Ornaments.App;
 using Ornaments.Solutions;
@@ -55,6 +46,12 @@ internal class Program
 }
 ```
 
+## Please be Considerate
+
+Ornaments includes a feature enabling automated scraping of, and submission of answers to, the Advent of Code wesbite. Sending a large volume of requests to the Advent of Code website within a short space of time may result in your user-agent and/or IP address being flagged, or you may blocked from making further requests entirely. Please be considerate of Eric, his work, and the many tens of thousands of participants that enjoy the event every year. Please use Ornaments considerably.
+
+A caching mechanism is employed to ensure that Ornaments will not scrape data more than once or, on a per-identity basis, submit the same answer twice. If you wish, you may disable automated submission entirely by setting `global.autosubmit` to `false` in your `appsettings.json`.
+
 ## Todo
 
 - [ ] Implement core runner. (In progress)
@@ -64,4 +61,10 @@ internal class Program
 - [ ] Implement existing standard library classses.
 - [ ] Implement wait support.
 
-<sub>With thanks to [Eric Wastl](https://twitter.com/ericwastl) for running this wonderful event each year.</sub>
+## Disclaimer
+
+Ornaments is written by Leif Walker-Grant. Neither Ornaments nor Leif Walker-Grant are affiliated with the Advent of Code in any way.
+
+## Special Mentions
+
+This project exists with my thanks to [Eric Wastl](https://twitter.com/ericwastl) for running the Advent of Code event each year.

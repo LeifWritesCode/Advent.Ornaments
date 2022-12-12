@@ -10,11 +10,13 @@ internal sealed class SomeSolution : ISolution
 
     public async Task<object> DoPartOneAsync(ISolutionContext solutionContext)
     {
+        await Task.CompletedTask;
         return new();
     }
 
     public async Task<object> DoPartTwoAsync(ISolutionContext solutionContext)
     {
+        await Task.CompletedTask;
         return new();
     }
 
