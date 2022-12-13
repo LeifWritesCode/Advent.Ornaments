@@ -4,6 +4,10 @@ An [Advent of Code](https://adventofcode.com) solutions runner and standard libr
 
 ## (Really) Quick Start
 
+A working example project, implementing day 1 of event year 2022, is included. See [ExampleApp](.\ExampleApp), and don't forget to [configure](#configuration) it!
+
+### Boilerplate
+
 ```csharp
 // Create a new .NET 7 C# Console App named SomeConsoleApp
 // Install Ornaments from NuGet
@@ -41,7 +45,7 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        await OrnamentApp.CreateDefault().RunAsync(args);
+        await OrnamentsApp.CreateDefault().RunAsync(args);
     }
 }
 ```
