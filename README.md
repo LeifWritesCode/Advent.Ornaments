@@ -6,7 +6,7 @@ An [Advent of Code](https://adventofcode.com) solutions runner and standard libr
 
 A working example project, implementing day 1 of event year 2022, is included. See [ExampleApp](.\ExampleApp), and don't forget to [configure](#configuration) it!
 
-### Boilerplate
+### (Slighty Less) Quick Start
 
 ```csharp
 // Create a new .NET 7 C# Console App named SomeConsoleApp
@@ -58,7 +58,6 @@ In order to comply with Eric's request that all automated submissons carry a uni
 
 Session tokens are obtained by logging in to [Advent of Code](https://adventofcode.com/2022/auth/login) with one of the supported authorisation providers. You can then find the token in the request headers of each subsequent page load. Each token is unique to the provider.
 
-
 ### Minimal Configuration
 
 ```json
@@ -99,7 +98,6 @@ Ornaments records your inputs and submissions in an internal cache. Additionally
 
 The singlular copy of your cache exists on your machine, and deleting it is a destructive and permanent operation.  Whilst you can fetch inputs again, you are unable to resubmit answers. Attempting to do so may result in your token(s) being blacklisted by Eric.
 
-
 ## Please be Considerate
 
 Ornaments includes a feature enabling automated scraping of, and submission of answers to, the Advent of Code wesbite. Sending a large volume of requests to the Advent of Code website within a short space of time may result in your user-agent and/or IP address being flagged, or you may blocked from making further requests entirely. Please be considerate of Eric, his work, and the many tens of thousands of participants that enjoy the event every year. Please use Ornaments considerably.
@@ -115,9 +113,11 @@ A caching mechanism is employed to ensure that Ornaments will not scrape data mo
 - [ ] Implement existing standard library classses. (In progress)
 - [ ] Implement wait support.
 
-## Disclaimer
+## License and Disclaimer
 
-Ornaments is written by Leif Walker-Grant. Neither Ornaments nor Leif Walker-Grant are affiliated with the Advent of Code in any way.
+The Ornaments SDK is written by, and the copyright © of, Leif Walker-Grant. Neither Ornaments nor Leif Walker-Grant are affiliated with the Advent of Code in any way. The SDK is made available free-of-charge, as-is and without warranty, under the MIT license. For more information, see LICENSE.
+
+This project is indirectly dependent on SixLabors.ImageSharp, a library which is licensed under Apache 2.0 when disitributed as part of the Ornaments SDK. All other usage is covered by the [Six Labors Split License](https://github.com/SixLabors/ImageSharp/blob/master/LICENSE).
 
 ## Special Mentions
 

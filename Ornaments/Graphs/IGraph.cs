@@ -4,7 +4,7 @@
 public interface IGraph
 {
     // list of edges e
-    IEnumerable<(int p, int q)> E { get; }
+    IList<(int p, int q)> E { get; }
 
     // true if edge (p -> q) exists
     bool Adjacent(int p, int q);
@@ -26,7 +26,7 @@ public interface IGraph
 public interface IGraph<TVertex> : IGraph
 {
     // list of vertices v
-    IEnumerable<TVertex> V { get; }
+    IList<TVertex> V { get; }
 
     // add a new vertex, returning its index
     int AddVertex(TVertex value);
