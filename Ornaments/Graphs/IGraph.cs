@@ -12,7 +12,7 @@ public interface IGraph
     // all neighbours q where (p -> q) exists
     IEnumerable<int> Neighbours(int p);
 
-    // add edge (p -> q, 0) if it doesn't already exist
+    // add edge (p -> q, 0) if it doesn't already exist 
     // return true if edges were modified
     bool AddEdge((int p, int q) e);
 
