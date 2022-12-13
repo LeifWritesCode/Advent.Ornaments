@@ -115,7 +115,7 @@ A caching mechanism is employed to ensure that Ornaments will not scrape data mo
 
 ## License and Disclaimer
 
-The Ornaments SDK is written by, and the copyright © of, Leif Walker-Grant. Neither Ornaments nor Leif Walker-Grant are affiliated with the Advent of Code in any way. The SDK is made available free-of-charge, as-is and without warranty, under the MIT license. For more information, see LICENSE.
+The Ornaments SDK is written by, and the copyright &copy; of, Leif Walker-Grant. Neither Ornaments nor Leif Walker-Grant are affiliated with the Advent of Code in any way. The SDK is made available free-of-charge, as-is and without warranty, under the MIT license. For more information, see LICENSE.
 
 This project is indirectly dependent on SixLabors.ImageSharp, a library which is licensed under Apache 2.0 when disitributed as part of the Ornaments SDK. All other usage is covered by the [Six Labors Split License](https://github.com/SixLabors/ImageSharp/blob/master/LICENSE).
 
