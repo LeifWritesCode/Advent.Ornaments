@@ -50,6 +50,41 @@ internal class Program
 }
 ```
 
+## Command Line
+
+Ornaments implements a command line runner capable of listing avaialble solutions, solving challenges, and benchmarking solutions.
+
+To list all challenges --
+
+```
+dotnet run list
+```
+
+To solve a challenge --
+
+```
+dotnet run solve --year 2022 --day 1 [--dry-run] [--users GitHub]
+```
+
+Where `--year` is the event year, `--day` is the challenge date, `--dry-run` is an optional flag indicating answers should **not** be submitted, and `--users` specifies the tokens you would like to use.
+
+Lastly, to benchmark a solution --
+
+```
+dotnet run benchmark --year 2022 --day 1 [--runs 1000]
+```
+
+Where `--year` is the event year, `--day` is the challenge date, and `runs` is an optional integer argument specifying the number of runs to average over.
+
+For more information on how to use each command, and information on the commands themselves including default option values, you can use one of the following --
+
+```
+dotnet run -h
+dotnet run solve -h
+dotnet run list -h
+dotnet run benchmark -h
+```
+
 ## Configuration
 
 In order to comply with Eric's request that all automated submissons carry a unique user-agent, Ornaments requires that you provide a contact email address and fully-qualified URI pointing to the **public** source code of your implementing project. Additionally, if you are not using the `--dry-run` switch, you must specify at least one token.

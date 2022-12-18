@@ -17,5 +17,5 @@ internal class Input
     [Required]
     public Challenge? Challenge { get; set; }
 
-    public IEnumerable<Submission> Submissions { get; set; } = Enumerable.Empty<Submission>();
+    public ICollection<Submission> Submissions { get; set; }
 }

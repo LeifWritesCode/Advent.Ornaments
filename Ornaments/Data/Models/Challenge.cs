@@ -21,7 +21,7 @@ internal class Challenge
     [Required]
     public string Description { get; set; } = string.Empty;
 
-    public IEnumerable<Submission> Submissions { get; set; } = Enumerable.Empty<Submission>();
+    public ICollection<Submission> Submissions { get; set; }
 
-    public IEnumerable<Input> Inputs { get; set; } = Enumerable.Empty<Input>();
+    public ICollection<Input> Inputs { get; set; }
 }

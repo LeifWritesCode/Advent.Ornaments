@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Ornaments.App.Internals;
 using Ornaments.Data.Models;
-using Ornaments.Internals;
 
 namespace Ornaments.Data
 {

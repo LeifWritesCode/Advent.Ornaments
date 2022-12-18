@@ -1,6 +1,6 @@
 ﻿using Ornaments.Solutions;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals;
 
 internal class SolutionContext : ISolutionContext
 {

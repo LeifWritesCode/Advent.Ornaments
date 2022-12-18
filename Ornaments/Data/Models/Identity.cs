@@ -1,4 +1,4 @@
-﻿using Ornaments.Internals;
+﻿using Ornaments.App.Internals;
 using System.ComponentModel.DataAnnotations;
 
 namespace Ornaments.Data.Models;
@@ -15,5 +15,5 @@ internal class Identity
     [Required]
     public string Token { get; set; } = string.Empty;
 
-    public IEnumerable<Input> Inputs { get; set; } = Enumerable.Empty<Input>();
+    public ICollection<Input> Inputs { get; set; }
 }

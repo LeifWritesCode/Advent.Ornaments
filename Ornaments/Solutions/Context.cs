@@ -1,4 +1,4 @@
-﻿using Ornaments.Internals;
+﻿using Ornaments.App.Internals;
 
 namespace Ornaments.Solutions;
 

@@ -2,7 +2,7 @@
   "profiles": {
     "ExampleApp": {
       "commandName": "Project",
-      "commandLineArgs": "solve -year 2022 -day 1"
+      "commandLineArgs": "solve --year 2022 --day 1"
     }
   }
 }

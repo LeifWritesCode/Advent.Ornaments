@@ -1,4 +1,4 @@
-﻿namespace Ornaments.Internals;
+﻿namespace Ornaments.App.Internals;
 
 internal enum TokenType
 {

@@ -7,14 +7,10 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.RegularExpressions;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals.Net;
 
-internal partial class AdventOfCodeClient
+internal partial class AocRestClient
 {
-    private const string uriPrefixFragment = "{0}/day/{1}";
-    private const string getInputUriFragment = uriPrefixFragment + "/input";
-    private const string postAnswerUriFragment = uriPrefixFragment + "/answer";
-
     private static readonly Regex title = GetTitleRegex();
     private static readonly Regex rightAnswer = GetRightAnswerRegex();
     private static readonly Regex wrongAnswer = GetWrongAnswerRegex();
@@ -23,7 +19,7 @@ internal partial class AdventOfCodeClient
     private readonly OrnamentsContext ornamentsContext;
     private readonly TokenOptions tokenOptions;
 
-    public AdventOfCodeClient(IHttpClientFactory httpClientFactory, OrnamentsContext ornamentsContext, IOptions<TokenOptions> tokenOptions)
+    public AocRestClient(IHttpClientFactory httpClientFactory, OrnamentsContext ornamentsContext, IOptions<TokenOptions> tokenOptions)
     {
         ArgumentNullException.ThrowIfNull(httpClientFactory, nameof(httpClientFactory));
         ArgumentNullException.ThrowIfNull(tokenOptions, nameof(tokenOptions));
@@ -42,9 +38,8 @@ internal partial class AdventOfCodeClient
             return dbChallenge;
 
         // Scrape!
-        var httpClient = httpClientFactory.CreateClient(nameof(AdventOfCodeClient));
-        var endpoint = string.Format(uriPrefixFragment, year, day);
-        var response = await httpClient.GetAsync(endpoint);
+        var httpClient = httpClientFactory.CreateClient(nameof(AocRestClient));
+        var response = await httpClient.GetAsync($"{year}/day/{day}");
 
         // Handle the response and return to sender.
         return response.StatusCode switch
@@ -57,15 +52,18 @@ internal partial class AdventOfCodeClient
 
     public async Task<Input> GetInputAsync(TokenType tokenType, int year, int day)
     {
-
         // Ensure matching challenge + identity entities have been created.
         var dbChallenge = await GetChallengeAsync(year, day);
         var dbIdentity = await GetIdentityAsync(tokenType);
 
+        // if it already exists, return it
+        var dbInput = ornamentsContext.Inputs.FirstOrDefault(x => x.Challenge == dbChallenge && x.Identity == dbIdentity);
+        if (dbInput is not null)
+            return dbInput;
+
         // Scrape!
-        var httpClient = httpClientFactory.CreateClient(dbIdentity.Provider.ToString());
-        var endpoint = string.Format(getInputUriFragment, year, day);
-        var response = await httpClient.GetAsync(endpoint);
+        var httpClient = httpClientFactory.CreateClient(tokenType.ToString());
+        var response = await httpClient.GetAsync($"{year}/day/{day}/input");
 
         // Handle the response and return to sender.
         return response.StatusCode switch
@@ -98,10 +96,14 @@ internal partial class AdventOfCodeClient
         if (dbInput is null)
             throw new InvalidOperationException("can't push with no matching input");
 
+        // don't resubmit an answer we've seen before
+        var dbSubmission = ornamentsContext.Submissions.FirstOrDefault(x => x.Challenge == dbChallenge && x.Input == dbInput && x.Answer == answer.ToString());
+        if (dbSubmission is not null)
+            return dbSubmission;
+
         // Submit!
         var httpClient = httpClientFactory.CreateClient(token.ToString());
-        var endpoint = string.Format(postAnswerUriFragment, year, day);
-        var response = await httpClient.PostAsJsonAsync(endpoint, new { level, answer });
+        var response = await httpClient.PostAsJsonAsync($"{year}/day/{day}/answer", new { level, answer });
 
         // Handle the response and return to sender.
         return response.StatusCode switch

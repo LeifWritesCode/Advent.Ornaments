@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ornaments.App;
 using Ornaments.Data;
 using Ornaments.Extensions;
+using Ornaments.App.Internals.Net;
 using Ornaments.Solutions;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Reflection;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals;
 
 internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
 {
@@ -40,7 +40,7 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
         // add an http client for each token
         var tokenTypes = Enum.GetValues<TokenType>();
         var tokenOptions = new TokenOptions();
-        configuration.GetSection(OrnamentsOptions.Section).Bind(tokenOptions);
+        configuration.GetSection(TokenOptions.Section).Bind(tokenOptions);
         foreach (var tokenType in tokenTypes)
         {
             if (tokenOptions.TryGet(tokenType, out var token))
@@ -50,7 +50,8 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
         }
 
         // and one more (sans session token) for the aoc server
-        AddHttpClient(serviceCollection, configuration, nameof(AdventOfCodeClient));
+        serviceCollection.AddTransient<AocRestClient>();
+        AddHttpClient(serviceCollection, configuration, nameof(AocRestClient));
 
         var solutions = AppDomain.CurrentDomain
             .GetAssemblies()
@@ -60,7 +61,7 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
             .Where(x => !x.IsAbstract)
             .Where(x => x.GetCustomAttribute<RegisterOrnamentAttribute>() is not null);
 
-        foreach (var solution in solutions )
+        foreach (var solution in solutions)
             serviceCollection.AddTransient(sp => new SolutionDescriptor(sp, solution));
 
         serviceCollection.AddOptions<TokenOptions>()
@@ -77,13 +78,13 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
         return new CommandLineOrnamentsApp(serviceProvider);
     }
 
-    private void AddHttpClient(IServiceCollection serviceCollection, IConfiguration configuration, string name, string token = "")
+    private static void AddHttpClient(IServiceCollection serviceCollection, IConfiguration configuration, string name, string token = "")
     {
         var httpClientBuilder = serviceCollection.AddHttpClient(name);
         httpClientBuilder.ConfigureHttpClient(config =>
         {
             var assemblyFileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-            var name = assemblyFileVersionInfo.ProductName ?? assemblyFileVersionInfo.FileName;
+            // var name = assemblyFileVersionInfo.ProductName ?? assemblyFileVersionInfo.FileName;
             var version = assemblyFileVersionInfo.ProductVersion;
             var ornamentOptions = new OrnamentsOptions();
             configuration.GetSection(OrnamentsOptions.Section).Bind(ornamentOptions);
@@ -93,7 +94,7 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
 
             var compatibleValue = new ProductInfoHeaderValue("Mozilla", "5.50");
             var ornamentCommentValue = new ProductInfoHeaderValue("(compatible; Ornaments SDK; contact hei@lwg.no; source https://github.com/leifwritescode/ornaments;)");
-            var productValue = new ProductInfoHeaderValue(name, version);
+            var productValue = new ProductInfoHeaderValue("Ornaments", version);
             var productCommentValue = new ProductInfoHeaderValue($"(contact {ornamentOptions.EmailAddress}; source {ornamentOptions.SourceCodeUri};)");
 
             config.DefaultRequestHeaders.UserAgent.Add(compatibleValue);

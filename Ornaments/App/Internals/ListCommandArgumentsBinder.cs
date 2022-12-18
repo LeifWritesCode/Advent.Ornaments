@@ -1,7 +1,7 @@
 ﻿using System.CommandLine;
 using System.CommandLine.Binding;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals;
 
 internal class ListCommandArgumentsBinder : BinderBase<ListCommandArguments>
 {

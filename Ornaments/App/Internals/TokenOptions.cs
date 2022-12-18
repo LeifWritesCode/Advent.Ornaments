@@ -1,7 +1,7 @@
 ﻿using Ornaments.Extensions;
 using System.Diagnostics;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals;
 
 internal class TokenOptions
 {

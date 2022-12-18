@@ -2,7 +2,7 @@
 using Ornaments.Solutions;
 using System.Reflection;
 
-namespace Ornaments.Internals;
+namespace Ornaments.App.Internals;
 
 internal class SolutionDescriptor
 {
