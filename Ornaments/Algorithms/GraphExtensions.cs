@@ -4,7 +4,6 @@ namespace Ornaments.Algorithms;
 
 public static class GraphExtensions
 {
-
     /// <summary>
     /// Gets the manhattan distance between two given nodes on a graph representing a grid.
     /// </summary>

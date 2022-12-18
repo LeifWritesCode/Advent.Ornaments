@@ -1,4 +1,4 @@
-﻿namespace Ornaments;
+﻿namespace Ornaments.Graphs;
 
 public class Cell<Tvalue>
 {

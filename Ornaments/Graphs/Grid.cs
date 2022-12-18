@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 
-namespace Ornaments;
+namespace Ornaments.Graphs;
 
 /// <summary>
 /// Represents an arbitrary NxM grid, with the origin in the top left corner.

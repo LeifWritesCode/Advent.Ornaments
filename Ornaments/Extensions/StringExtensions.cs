@@ -11,4 +11,9 @@ public static class StringExtensions
     {
         return string.IsNullOrWhiteSpace(self);
     }
+
+    public static int ToInt(this string self)
+    {
+        return int.Parse(self);
+    }
 }

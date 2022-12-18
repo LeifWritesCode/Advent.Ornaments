@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Ornaments;
+﻿namespace Ornaments.IO.InMemory;
 
 public class DirectoryNode : INode
 {

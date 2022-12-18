@@ -1,8 +1,8 @@
-﻿namespace Ornaments;
+﻿namespace Ornaments.IO.InMemory;
 
 public class FileNode : INode
 {
-    public string Name {  get; init; }
+    public string Name { get; init; }
 
     public int Size { get; init; }
 
