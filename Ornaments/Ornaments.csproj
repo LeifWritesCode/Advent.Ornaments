@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Ornaments</PackageId>
-    <Version>2022.12.18.1-alpha1</Version>
+    <Version>2022.12.19-alpha1</Version>
     <Authors>Leif Walker-Grant</Authors>
     <Company>Leif Walker-Grant</Company>
     <Product>Ornaments — An Advent of Code SDK</Product>

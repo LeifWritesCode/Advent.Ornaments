@@ -56,7 +56,7 @@ public class Grid<Tvalue>
 
     public Cell<Tvalue> First(Tvalue value)
     {
-        return cells.First(x => x.Value.Equals(value));
+        return cells.First(x => x.Value?.Equals(value) ?? false);
     }
 
     public IEnumerable<Cell<Tvalue>> Where(Func<Cell<Tvalue>, bool> predicate)

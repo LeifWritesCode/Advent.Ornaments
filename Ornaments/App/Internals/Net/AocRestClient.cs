@@ -78,7 +78,7 @@ internal partial class AocRestClient
         };
     }
 
-    public async Task<Submission> PostSubmissionAsync(TokenType tokenType, int year, int day, int level, object answer)
+    public async Task<Submission> PostSubmissionAsync(TokenType tokenType, int year, int day, object answer)
     {
         // If the token isn't present in the config then we can't/won't attempt the submission.
         // We need the token in the http context, and its absence from the config means we are absent an appropriately configured http client.
@@ -100,6 +100,13 @@ internal partial class AocRestClient
         var dbSubmission = ornamentsContext.Submissions.FirstOrDefault(x => x.Challenge == dbChallenge && x.Input == dbInput && x.Answer == answer.ToString());
         if (dbSubmission is not null)
             return dbSubmission;
+
+        // by default, submit answers for level 1
+        // if a correct answer exists for the challenge + input combo, then submit level 2.
+        var level = 1;
+        dbSubmission = ornamentsContext.Submissions.FirstOrDefault(x => x.Challenge == dbChallenge && x.Input == dbInput && x.Answer != answer.ToString() && x.Response == Response.Correct);
+        if (dbSubmission is not null)
+            level = 2;
 
         // Submit!
         var httpClient = httpClientFactory.CreateClient(token.ToString());

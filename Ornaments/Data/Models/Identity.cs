@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ornaments.Data.Models;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 internal class Identity
 {
     [Key]
@@ -17,3 +18,4 @@ internal class Identity
 
     public ICollection<Input> Inputs { get; set; }
 }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.

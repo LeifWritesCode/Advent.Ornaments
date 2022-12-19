@@ -70,6 +70,7 @@ internal class CommandLineOrnamentsAppBuilder : IOrnamentsAppBuilder
             .Configure(ornamentOptions => configuration.GetSection(OrnamentsOptions.Section).Bind(ornamentOptions));
 
         serviceCollection.AddDbContext<OrnamentsContext>();
+        serviceCollection.AddTransient(typeof(ILogger<>), typeof(SpectreLogger<>));
 
         while (configurations.Any())
             configurations.Dequeue().Invoke(serviceCollection);
