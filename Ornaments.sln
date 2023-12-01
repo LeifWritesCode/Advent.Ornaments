@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ornaments", "Ornaments\Ornaments.csproj", "{B2400937-69E5-4B2A-97D7-28DB9376D9E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{FD676836-C21A-4946-9EF0-8C832C66FF0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2400937-69E5-4B2A-97D7-28DB9376D9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2400937-69E5-4B2A-97D7-28DB9376D9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2400937-69E5-4B2A-97D7-28DB9376D9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2400937-69E5-4B2A-97D7-28DB9376D9E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D37FB05E-3EC2-4CD5-B64F-D9F3AEECAEA8}
+	EndGlobalSection
+EndGlobal
