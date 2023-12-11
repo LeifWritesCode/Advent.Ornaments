@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ornaments", "Ornaments\Ornaments.csproj", "{B2400937-69E5-4B2A-97D7-28DB9376D9E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{FD676836-C21A-4946-9EF0-8C832C66FF0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{FD676836-C21A-4946-9EF0-8C832C66FF0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowstorm", "Snowstorm\Snowstorm.csproj", "{C82D8AFB-44C0-462D-960D-79F74EA75C86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD676836-C21A-4946-9EF0-8C832C66FF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C82D8AFB-44C0-462D-960D-79F74EA75C86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C82D8AFB-44C0-462D-960D-79F74EA75C86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C82D8AFB-44C0-462D-960D-79F74EA75C86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C82D8AFB-44C0-462D-960D-79F74EA75C86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
