@@ -1,4 +1,4 @@
-﻿namespace Snowstorm.Parsing;
+﻿namespace Snowstorm.Extensions;
 
 public static class StringExtensions
 {

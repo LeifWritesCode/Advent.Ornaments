@@ -1,5 +1,4 @@
-﻿,
-,namespace Snowstorm.Parsing;
+﻿namespace Snowstorm.Parsing;
 
 public abstract class AbstractParser<Tparsed> : IParser<Tparsed> where Tparsed : class?
 {

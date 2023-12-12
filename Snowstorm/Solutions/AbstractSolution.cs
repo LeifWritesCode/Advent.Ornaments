@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Snowstorm.Extensions;
 using Snowstorm.Parsing;
 
 namespace Snowstorm.Solutions;
@@ -24,11 +25,11 @@ public class SomeThingUsingParser
 internal abstract class AbstractSolution<Tparser> : ISolution
     where Tparser : notnull
 {
-    private readonly Tparser _parser;
+    protected readonly Tparser _parser;
 
-    public AbstractSolution(IServiceProvider serviceProvider)
+    public AbstractSolution(Tparser parser)
     {
-        _parser = serviceProvider.GetRequiredService<Tparser>();
+        _parser = parser;
     }
 
     public abstract string PartOne();
